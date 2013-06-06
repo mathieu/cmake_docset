@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
 project(CMake-DocSet)
 
+if(NOT CMAKE_INSTALL_PREFIX)
+	set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
+endif()
+
 set(CMAKE_DOCSET_ROOT CMake.docset/Contents)
 set(CMAKE_DOCSET_DOCUMENT_ROOT ${CMAKE_DOCSET_ROOT})
 
