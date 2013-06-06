@@ -1,4 +1,4 @@
 <entry>
 	<version>${CMAKE_VERSION}</version>
-	<url>http://dl.bintray.com/mathieu/CMake-docset/CMake.tar.gz?direct</url>
+	<url>https://raw.github.com/mathieu/cmake-docset/master/Release/CMake.xml</url>
 </entry>
