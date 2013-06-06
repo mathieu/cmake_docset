@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(CMake-DocSet)
+project(CMake-docset)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
 
@@ -13,7 +13,7 @@ endif()
 install(CODE "execute_process(COMMAND echo .quit
                               COMMAND ${SQLITE_COMMAND} -init ${CMAKE_CURRENT_SOURCE_DIR}/schema.sql ${CMAKE_BINARY_DIR}/docSet.dsidx )")
 
-
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMake.xml.in ${CMAKE_BINARY_DIR}/CMake.xml)
 
 macro(ADD_SQLITE_INDEX type list docset)
 	set(CMAKE_HELP_TYPE ${type})
