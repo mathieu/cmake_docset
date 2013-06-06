@@ -1,0 +1,3 @@
+#!/bin/sh
+${CMAKE_COMMAND} --help-${CMAKE_HELP_TYPE}-list | awk '{ if ( NR > 1  ) { hvar=$1; gsub(/<|>/,"",hvar); print "INSERT INTO searchIndex(name, type, path) VALUES (\""$1"\", \"${CMAKE_HELP_DOCSET_TYPE}\", \"cmake-${CMAKE_HELP_LIST}.html#${CMAKE_HELP_TYPE}:"hvar"\");"} }'
+echo .quit
