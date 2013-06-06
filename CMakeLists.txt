@@ -1,12 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 project(CMake-DocSet)
 
-if(NOT CMAKE_INSTALL_PREFIX)
-	set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
-endif()
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
 
-set(CMAKE_DOCSET_ROOT CMake.docset/Contents)
-set(CMAKE_DOCSET_DOCUMENT_ROOT ${CMAKE_DOCSET_ROOT})
+set(CMAKE_DOCSET_ROOT CMake.docset)
 
 find_program( SQLITE_COMMAND NAMES sqlite3 sqlite )
 if(EXISTS ${CMAKE_BINARY_DIR}/docSet.dsidx)
@@ -26,7 +23,7 @@ macro(ADD_SQLITE_INDEX type list docset)
 	install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/index_${CMAKE_HELP_TYPE}.sh 
                   COMMAND ${SQLITE_COMMAND} ${CMAKE_BINARY_DIR}/docSet.dsidx )")
 	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND}  --help-${list} ${CMAKE_BINARY_DIR}/cmake-${list}.html)")
-	install(FILES ${CMAKE_BINARY_DIR}/cmake-${list}.html DESTINATION ${CMAKE_DOCSET_ROOT}/Resources/Documents/)
+	install(FILES ${CMAKE_BINARY_DIR}/cmake-${list}.html DESTINATION ${CMAKE_DOCSET_ROOT}/Contents/Resources/Documents/)
 endmacro(ADD_SQLITE_INDEX)
 
 ADD_SQLITE_INDEX(command commands Command)
@@ -35,8 +32,9 @@ ADD_SQLITE_INDEX(variable variables Variable)
 ADD_SQLITE_INDEX(module modules Module)
 
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist DESTINATION ${CMAKE_DOCSET_ROOT})
-install(FILES ${CMAKE_BINARY_DIR}/docSet.dsidx DESTINATION ${CMAKE_DOCSET_ROOT}/Resources/)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/icon.png DESTINATION ${CMAKE_DOCSET_ROOT})
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist DESTINATION ${CMAKE_DOCSET_ROOT}/Contents)
+install(FILES ${CMAKE_BINARY_DIR}/docSet.dsidx DESTINATION ${CMAKE_DOCSET_ROOT}/Contents/Resources/)
 
 set(CPACK_GENERATOR "TGZ")
 set(CPACK_PACKAGE_FILE_NAME "CMake")
