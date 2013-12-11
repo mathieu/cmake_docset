@@ -22,7 +22,7 @@ Packaging
 Using existing docset
 ---------------------
 
-For your convenience, the latest available docset is hosted here : [ Dash's dash-feed ](http://tinyurl.com/cmake-dash-docset) (via tinyurl)
+For your convenience, the latest available docset is hosted here : [ Dash's dash-feed ](http://tinyurl.com/dash-cmake-docset) (via tinyurl)
 
 ```
 dash-feed://https%3A%2F%2Fraw.github.com%2Fmathieu%2Fcmake_docset%2Fmaster%2FRelease%2FCMake.xml
