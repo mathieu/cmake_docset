@@ -22,7 +22,7 @@ macro(ADD_SQLITE_INDEX type list docset)
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/index.sh.in ${CMAKE_BINARY_DIR}/index_${CMAKE_HELP_TYPE}.sh)
 	install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/index_${CMAKE_HELP_TYPE}.sh 
                   COMMAND ${SQLITE_COMMAND} ${CMAKE_BINARY_DIR}/docSet.dsidx )")
-	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND}  --help-${list} ${CMAKE_BINARY_DIR}/cmake-${list}.html)")
+	install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" --help-${list} ${CMAKE_BINARY_DIR}/cmake-${list}.html)")
 	install(FILES ${CMAKE_BINARY_DIR}/cmake-${list}.html DESTINATION ${CMAKE_DOCSET_ROOT}/Contents/Resources/Documents/)
 endmacro(ADD_SQLITE_INDEX)
 
